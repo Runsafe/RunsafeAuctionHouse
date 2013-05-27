@@ -16,6 +16,7 @@ public class Plugin extends RunsafePlugin
 		// Commands
 		this.addComponent(NewAuction.class);
 
+		// Science
 		// Database
 		this.addComponent(AuctionsRepository.class);
 	}
