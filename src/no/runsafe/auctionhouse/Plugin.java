@@ -2,9 +2,9 @@ package no.runsafe.auctionhouse;
 
 import no.runsafe.auctionhouse.commands.NewAuction;
 import no.runsafe.auctionhouse.database.AuctionsRepository;
-import no.runsafe.framework.RunsafePlugin;
+import no.runsafe.framework.RunsafeConfigurablePlugin;
 
-public class Plugin extends RunsafePlugin
+public class Plugin extends RunsafeConfigurablePlugin
 {
 	@Override
 	protected void PluginSetup()
@@ -16,7 +16,6 @@ public class Plugin extends RunsafePlugin
 		// Commands
 		this.addComponent(NewAuction.class);
 
-		// Science
 		// Database
 		this.addComponent(AuctionsRepository.class);
 	}
