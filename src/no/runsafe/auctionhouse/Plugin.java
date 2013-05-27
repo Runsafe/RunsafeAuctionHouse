@@ -1,5 +1,7 @@
 package no.runsafe.auctionhouse;
 
+import no.runsafe.auctionhouse.commands.NewAuction;
+import no.runsafe.auctionhouse.database.AuctionsRepository;
 import no.runsafe.framework.RunsafePlugin;
 
 public class Plugin extends RunsafePlugin
@@ -7,6 +9,14 @@ public class Plugin extends RunsafePlugin
 	@Override
 	protected void PluginSetup()
 	{
-		addComponent(SomeComponent.class); // Replace this with your own components, this is just an example.
+		// Core
+		this.addComponent(AuctionWindowManager.class);
+		this.addComponent(AuctionHandler.class);
+
+		// Commands
+		this.addComponent(NewAuction.class);
+
+		// Database
+		this.addComponent(AuctionsRepository.class);
 	}
 }
