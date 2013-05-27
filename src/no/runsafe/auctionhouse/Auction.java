@@ -1,18 +1,19 @@
 package no.runsafe.auctionhouse;
 
+import no.runsafe.framework.server.item.RunsafeItemStack;
 import no.runsafe.framework.server.player.RunsafePlayer;
 import org.joda.time.DateTime;
 
 public class Auction
 {
-	public Auction(int ID)
-	{
-		this.ID = ID;
-	}
-
 	public int getID()
 	{
 		return this.ID;
+	}
+
+	public void setID(int ID)
+	{
+		this.ID = ID;
 	}
 
 	public void setPlayer(RunsafePlayer player)
@@ -55,9 +56,20 @@ public class Auction
 		return this.buyoutPrice;
 	}
 
+	public void setItem(RunsafeItemStack item)
+	{
+		this.item = item;
+	}
+
+	public RunsafeItemStack getItem()
+	{
+		return this.item;
+	}
+
 	private int ID;
 	private RunsafePlayer owner;
 	private DateTime ends;
 	private int[] currentBid;
 	private int[] buyoutPrice;
+	private RunsafeItemStack item;
 }

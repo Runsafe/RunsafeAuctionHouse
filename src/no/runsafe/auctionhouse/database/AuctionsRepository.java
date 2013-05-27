@@ -1,7 +1,10 @@
 package no.runsafe.auctionhouse.database;
 
+import no.runsafe.auctionhouse.Auction;
 import no.runsafe.framework.database.IDatabase;
 import no.runsafe.framework.database.Repository;
+import no.runsafe.framework.server.RunsafeServer;
+import no.runsafe.framework.server.inventory.RunsafeInventory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +22,38 @@ public class AuctionsRepository extends Repository
 		return "auctions";
 	}
 
+	public void storeAuction(Auction auction)
+	{
+		RunsafeInventory holder = RunsafeServer.Instance.createInventory(null, 9);
+		holder.addItems(auction.getItem());
+
+		int[] currentBid = auction.getCurrentBid();
+		int[] buyoutBid = auction.getBuyoutPrice();
+
+		this.database.Execute(
+				"INSERT INTO auctions (" +
+						"owner," +
+						"item," +
+						"ends," +
+						"lowCurrentBid," +
+						"medCurrentBid," +
+						"highCurrentBid," +
+						"lowBuyout," +
+						"medBuyout," +
+						"highBuyout)" +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+				auction.getPlayer().getName(),
+				holder.serialize(),
+				auction.getEnding(),
+				currentBid[0],
+				currentBid[1],
+				currentBid[2],
+				buyoutBid[0],
+				buyoutBid[1],
+				buyoutBid[2]
+		);
+	}
+
 	@Override
 	public HashMap<Integer, List<String>> getSchemaUpdateQueries()
 	{
@@ -26,7 +61,7 @@ public class AuctionsRepository extends Repository
 		ArrayList<String> sql = new ArrayList<String>();
 
 		sql.add(
-				"CREATE TABLE `runsafeInventories` (" +
+				"CREATE TABLE `auctions` (" +
 						"`ID` int(10) NOT NULL AUTO_INCREMENT" +
 						"`owner` varchar(50) NOT NULL," +
 						"`item` longtext," +
