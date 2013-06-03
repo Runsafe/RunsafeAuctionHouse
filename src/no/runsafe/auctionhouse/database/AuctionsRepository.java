@@ -62,7 +62,7 @@ public class AuctionsRepository extends Repository
 
 		sql.add(
 				"CREATE TABLE `auctions` (" +
-						"`ID` int(10) NOT NULL AUTO_INCREMENT" +
+						"`ID` int(10) NOT NULL AUTO_INCREMENT," +
 						"`owner` varchar(50) NOT NULL," +
 						"`item` longtext," +
 						"`ends` DATETIME," +
