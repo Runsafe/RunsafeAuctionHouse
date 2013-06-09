@@ -2,7 +2,7 @@ package no.runsafe.auctionhouse;
 
 import no.runsafe.framework.server.RunsafeServer;
 import no.runsafe.framework.server.inventory.RunsafeInventory;
-import no.runsafe.framework.server.item.RunsafeItemStack;
+import no.runsafe.framework.server.item.meta.RunsafeMeta;
 import no.runsafe.framework.server.player.RunsafePlayer;
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public class AuctionWindowManager
 		player.openInventory(this.getWindow(player));
 	}
 
-	public List<RunsafeItemStack> getItems(RunsafePlayer player)
+	public List<RunsafeMeta> getItems(RunsafePlayer player)
 	{
 		return this.getWindow(player).getContents();
 	}

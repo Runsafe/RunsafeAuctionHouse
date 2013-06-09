@@ -1,6 +1,7 @@
 package no.runsafe.auctionhouse;
 
 import no.runsafe.framework.server.item.RunsafeItemStack;
+import no.runsafe.framework.server.item.meta.RunsafeMeta;
 import no.runsafe.framework.server.player.RunsafePlayer;
 import org.joda.time.DateTime;
 
@@ -38,12 +39,12 @@ public class Auction
 
 	public void setCurrentBid(int low, int med, int high)
 	{
-		this.currentBid = new int[] {low, med, high};
+		this.currentBid = new int[]{low, med, high};
 	}
 
 	public void setBuyoutPrice(int low, int med, int high)
 	{
-		this.buyoutPrice = new int[] {low, med, high};
+		this.buyoutPrice = new int[]{low, med, high};
 	}
 
 	public int[] getCurrentBid()
@@ -56,12 +57,12 @@ public class Auction
 		return this.buyoutPrice;
 	}
 
-	public void setItem(RunsafeItemStack item)
+	public void setItem(RunsafeMeta item)
 	{
 		this.item = item;
 	}
 
-	public RunsafeItemStack getItem()
+	public RunsafeMeta getItem()
 	{
 		return this.item;
 	}
@@ -71,5 +72,5 @@ public class Auction
 	private DateTime ends;
 	private int[] currentBid;
 	private int[] buyoutPrice;
-	private RunsafeItemStack item;
+	private RunsafeMeta item;
 }
