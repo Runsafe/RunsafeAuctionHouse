@@ -1,9 +1,8 @@
 package no.runsafe.auctionhouse;
 
 import no.runsafe.auctionhouse.database.AuctionsRepository;
-import no.runsafe.framework.server.item.RunsafeItemStack;
-import no.runsafe.framework.server.item.meta.RunsafeMeta;
-import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 import org.joda.time.DateTime;
 
 import java.util.List;

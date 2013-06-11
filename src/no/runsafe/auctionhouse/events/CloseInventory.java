@@ -1,8 +1,8 @@
 package no.runsafe.auctionhouse.events;
 
 import no.runsafe.auctionhouse.AuctionHandler;
-import no.runsafe.framework.event.inventory.IInventoryClosed;
-import no.runsafe.framework.server.event.inventory.RunsafeInventoryCloseEvent;
+import no.runsafe.framework.api.event.inventory.IInventoryClosed;
+import no.runsafe.framework.minecraft.event.inventory.RunsafeInventoryCloseEvent;
 
 public class CloseInventory implements IInventoryClosed
 {
