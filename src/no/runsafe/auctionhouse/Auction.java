@@ -1,7 +1,7 @@
 package no.runsafe.auctionhouse;
 
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 import org.joda.time.DateTime;
 
 public class Auction
@@ -16,12 +16,12 @@ public class Auction
 		this.ID = ID;
 	}
 
-	public void setPlayer(RunsafePlayer player)
+	public void setPlayer(IPlayer player)
 	{
 		this.owner = player;
 	}
 
-	public RunsafePlayer getPlayer()
+	public IPlayer getPlayer()
 	{
 		return this.owner;
 	}
@@ -67,7 +67,7 @@ public class Auction
 	}
 
 	private int ID;
-	private RunsafePlayer owner;
+	private IPlayer owner;
 	private DateTime ends;
 	private int[] currentBid;
 	private int[] buyoutPrice;

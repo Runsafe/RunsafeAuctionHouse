@@ -1,36 +1,36 @@
 package no.runsafe.auctionhouse;
 
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class AuctionWindowManager
 {
-	public void openAuctionWindow(RunsafePlayer player)
+	public void openAuctionWindow(IPlayer player)
 	{
 		player.openInventory(this.getWindow(player));
 	}
 
-	public List<RunsafeMeta> getItems(RunsafePlayer player)
+	public List<RunsafeMeta> getItems(IPlayer player)
 	{
 		return this.getWindow(player).getContents();
 	}
 
-	public boolean hasWindow(RunsafePlayer player)
+	public boolean hasWindow(IPlayer player)
 	{
 		return this.windows.containsKey(player.getName());
 	}
 
-	public void deleteWindow(RunsafePlayer player)
+	public void deleteWindow(IPlayer player)
 	{
 		this.windows.remove(player.getName());
 	}
 
-	private RunsafeInventory getWindow(RunsafePlayer player)
+	private RunsafeInventory getWindow(IPlayer player)
 	{
 		String playerName = player.getName();
 		if (!this.windows.containsKey(playerName))

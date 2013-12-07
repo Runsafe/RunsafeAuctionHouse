@@ -1,8 +1,8 @@
 package no.runsafe.auctionhouse;
 
 import no.runsafe.auctionhouse.database.AuctionsRepository;
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 import org.joda.time.DateTime;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class AuctionHandler
 		this.auctionWindowManager = auctionWindowManager;
 	}
 
-	public void checkAuctionStart(RunsafePlayer player)
+	public void checkAuctionStart(IPlayer player)
 	{
 		if (this.auctionWindowManager.hasWindow(player))
 		{
