@@ -1,7 +1,7 @@
 package no.runsafe.auctionhouse;
 
+import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.player.IPlayer;
-import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 
@@ -10,6 +10,11 @@ import java.util.List;
 
 public class AuctionWindowManager
 {
+	public AuctionWindowManager(IServer server)
+	{
+		this.server = server;
+	}
+
 	public void openAuctionWindow(IPlayer player)
 	{
 		player.openInventory(this.getWindow(player));
@@ -34,10 +39,11 @@ public class AuctionWindowManager
 	{
 		String playerName = player.getName();
 		if (!this.windows.containsKey(playerName))
-			this.windows.put(playerName, RunsafeServer.Instance.createInventory(null, 9, "Create New Auction"));
+			this.windows.put(playerName, server.createInventory(null, 9, "Create New Auction"));
 
 		return this.windows.get(playerName);
 	}
 
+	private final IServer server;
 	private HashMap<String, RunsafeInventory> windows = new HashMap<String, RunsafeInventory>();
 }

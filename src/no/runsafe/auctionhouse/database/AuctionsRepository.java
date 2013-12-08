@@ -1,9 +1,9 @@
 package no.runsafe.auctionhouse.database;
 
 import no.runsafe.auctionhouse.Auction;
+import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.database.IDatabase;
 import no.runsafe.framework.api.database.Repository;
-import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 
 import java.util.ArrayList;
@@ -12,9 +12,10 @@ import java.util.List;
 
 public class AuctionsRepository extends Repository
 {
-	public AuctionsRepository(IDatabase database)
+	public AuctionsRepository(IDatabase database, IServer server)
 	{
 		this.database = database;
+		this.server = server;
 	}
 
 	public String getTableName()
@@ -24,7 +25,7 @@ public class AuctionsRepository extends Repository
 
 	public void storeAuction(Auction auction)
 	{
-		RunsafeInventory holder = RunsafeServer.Instance.createInventory(null, 9);
+		RunsafeInventory holder = server.createInventory(null, 9);
 		holder.addItems(auction.getItem());
 
 		int[] currentBid = auction.getCurrentBid();
@@ -81,4 +82,5 @@ public class AuctionsRepository extends Repository
 	}
 
 	IDatabase database;
+	private final IServer server;
 }
