@@ -15,7 +15,6 @@ public class Plugin extends RunsafeConfigurablePlugin
 		// Framework features
 		addComponent(Commands.class);
 		addComponent(Database.class);
-		addComponent(Events.class);
 
 		// Core
 		this.addComponent(AuctionWindowManager.class);
