@@ -1,13 +1,15 @@
 package no.runsafe.auctionhouse;
 
 import no.runsafe.auctionhouse.database.AuctionsRepository;
+import no.runsafe.framework.api.IConfiguration;
+import no.runsafe.framework.api.event.plugin.IConfigurationChanged;
 import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 import org.joda.time.DateTime;
 
 import java.util.List;
 
-public class AuctionHandler
+public class AuctionHandler implements IConfigurationChanged
 {
 	public AuctionHandler(AuctionsRepository auctionsRepository, AuctionWindowManager auctionWindowManager)
 	{
@@ -32,6 +34,11 @@ public class AuctionHandler
 				this.auctionsRepository.storeAuction(auction);
 			}
 		}
+	}
+
+	@Override
+	public void OnConfigurationChanged(IConfiguration configuration)
+	{
 	}
 
 	private AuctionsRepository auctionsRepository;
