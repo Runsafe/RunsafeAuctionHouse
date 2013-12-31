@@ -31,7 +31,7 @@ public class AuctionsRepository extends Repository
 		int[] currentBid = auction.getCurrentBid();
 		int[] buyoutBid = auction.getBuyoutPrice();
 
-		this.database.Execute(
+		this.database.execute(
 			"INSERT INTO auctions (" +
 				"owner," +
 				"item," +
