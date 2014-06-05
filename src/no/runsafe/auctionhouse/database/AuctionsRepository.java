@@ -3,7 +3,9 @@ package no.runsafe.auctionhouse.database;
 import no.runsafe.auctionhouse.Auction;
 import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.database.IDatabase;
+import no.runsafe.framework.api.database.ISchemaUpdate;
 import no.runsafe.framework.api.database.Repository;
+import no.runsafe.framework.api.database.SchemaUpdate;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 
 import java.util.ArrayList;
@@ -12,9 +14,8 @@ import java.util.List;
 
 public class AuctionsRepository extends Repository
 {
-	public AuctionsRepository(IDatabase database, IServer server)
+	public AuctionsRepository(IServer server)
 	{
-		this.database = database;
 		this.server = server;
 	}
 
@@ -56,12 +57,10 @@ public class AuctionsRepository extends Repository
 	}
 
 	@Override
-	public HashMap<Integer, List<String>> getSchemaUpdateQueries()
+	public ISchemaUpdate getSchemaUpdateQueries()
 	{
-		HashMap<Integer, List<String>> versions = new HashMap<Integer, List<String>>();
-		ArrayList<String> sql = new ArrayList<String>();
-
-		sql.add(
+		ISchemaUpdate schema = new SchemaUpdate();
+		schema.addQueries(
 			"CREATE TABLE `auctions` (" +
 				"`ID` int(10) NOT NULL AUTO_INCREMENT," +
 				"`owner` varchar(50) NOT NULL," +
@@ -76,11 +75,8 @@ public class AuctionsRepository extends Repository
 				"PRIMARY KEY (`ID`)" +
 				")"
 		);
-
-		versions.put(1, sql);
-		return versions;
+		return schema;
 	}
 
-	IDatabase database;
 	private final IServer server;
 }
